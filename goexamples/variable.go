@@ -1,4 +1,4 @@
-package types
+package goexamples
 
 //'Globalna' zmienna
 var owca = "Owca"
