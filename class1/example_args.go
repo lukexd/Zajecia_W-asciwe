@@ -11,51 +11,58 @@ import (
 //ControlProgramWithArgs Controls Programs flag inputs
 //Note: flaga -h automatycznie wypisze wszystkie
 func ControlProgramWithArgs() {
-	helperMsg := "Sums all passed args"
-	sumMode := flag.Bool("sum", false, helperMsg)
-	powerMode := flag.Int("power", -1, "Podnosi do potęgi podany arg")
+	sumMode := flag.Bool("sum", false, "Sumuje podane argumenty")
+	powerMode := flag.Bool("power", false, "Podnosi arg1 do potegi arg2")
 	flag.Parse()
 
-	//Jezeli zmienna jest pointerem to aby pobrać wartośc dodajemy *przy nazwie zmiennej
-	fmt.Printf("Power ma wartosc %v\n", *powerMode)
-
 	if *sumMode {
-		fmt.Println("Działam")
-		w := sumElements(flag.Args())
-		fmt.Println(w)
+		numberSlice, err := sliceAtoi(flag.Args())
+		handleError(err)
+		fmt.Println(sumElements(numberSlice))
 	}
 
-	if *powerMode > -1 {
-		args := flag.Args()
-		pow := *powerMode
+	if *powerMode {
+		numberSlice, err := sliceAtoi(flag.Args())
+		handleError(err)
+		args := numberSlice[0]
+		pow := numberSlice[1]
 		fmt.Println(powerUp(args, pow))
 	}
 }
 
-func powerUp(args []string, pow int) int {
-	if len(args) < 1 {
-		log.Fatalf("No argumenets need at least one")
-	}
+func powerUp(number, pow int) int {
 
-	number, err := strconv.Atoi(args[0])
-	if err != nil {
-		log.Fatalf("Error durning conversion %v", err)
-	}
 	return int(math.Pow(float64(number), float64(pow)))
 }
 
-func sumElements(elements []string) int {
+func sumElements(elements []int) int {
 	fmt.Println("Summing elements")
 	sum := 0
 
 	for _, el := range elements {
+
+		sum += el
+	}
+	return sum
+}
+
+func sliceAtoi(list []string) ([]int, error) {
+	intSlice := []int{}
+
+	for _, el := range list {
 		number, err := strconv.Atoi(el)
 
 		if err != nil {
-			log.Fatalf("Unable to convert element '%v' to int. Ended with Error %v", el, err)
+			return nil, err
 		}
 
-		sum += number
+		intSlice = append(intSlice, number)
 	}
-	return sum
+	return intSlice, nil
+}
+
+func handleError(err error) {
+	if err != nil {
+		log.Fatalf("Program exit due to %v", err)
+	}
 }
