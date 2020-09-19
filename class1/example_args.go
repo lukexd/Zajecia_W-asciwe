@@ -28,11 +28,6 @@ func ControlProgramWithArgs() {
 		pow := numberSlice[1]
 		fmt.Println(powerUp(args, pow))
 	}
-
-	if *powerMode > 1 {
-		a := powerArg(flag.Args(), *powerMode)
-		fmt.Println(a)
-	}
 }
 
 func powerUp(number, pow int) int {
