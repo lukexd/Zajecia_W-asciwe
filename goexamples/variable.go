@@ -2,6 +2,7 @@ package goexamples
 
 //'Globalna' zmienna
 var owca = "Owca"
+var UserName string
 
 //Owca jest wyeksportowaną zmienną, będzie dostępna dla innych paczek
 var Owca = "Baran"

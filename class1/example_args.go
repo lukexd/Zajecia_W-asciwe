@@ -12,10 +12,14 @@ import (
 func ControlProgramWithArgs() {
 	helperMsg := "Sums all passed args"
 	sumMode := flag.Bool("sum", false, helperMsg)
-
+	powerMode := flag.Int("power", -1, "Podnosi do potęgi podany arg")
 	flag.Parse()
 
+	//Jezeli zmienna jest pointerem to aby pobrać wartośc dodajemy *przy nazwie zmiennej
+	fmt.Printf("Power ma wartosc %v\n", *powerMode)
+
 	if *sumMode {
+		fmt.Println("Działam")
 		w := sumElements(flag.Args())
 		fmt.Println(w)
 	}
