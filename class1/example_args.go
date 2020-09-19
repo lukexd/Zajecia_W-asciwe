@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"math"
 	"strconv"
 )
 
@@ -23,6 +24,24 @@ func ControlProgramWithArgs() {
 		w := sumElements(flag.Args())
 		fmt.Println(w)
 	}
+
+	if *powerMode > -1 {
+		args := flag.Args()
+		pow := *powerMode
+		fmt.Println(powerUp(args, pow))
+	}
+}
+
+func powerUp(args []string, pow int) int {
+	if len(args) < 1 {
+		log.Fatalf("No argumenets need at least one")
+	}
+
+	number, err := strconv.Atoi(args[0])
+	if err != nil {
+		log.Fatalf("Error durning conversion %v", err)
+	}
+	return int(math.Pow(float64(number), float64(pow)))
 }
 
 func sumElements(elements []string) int {

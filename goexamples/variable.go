@@ -10,7 +10,7 @@ var Owca = "Baran"
 //Deklarowanie wielu zmiennych naraz
 var (
 	punkty = 1
-	tygry  = "Marek"
+	tygrys = "Marek"
 	user   = "Matrix"
 	prawda = false
 )
@@ -30,5 +30,8 @@ const Baran = "Małpa"
 //Tworzenie wielu stałych naraz
 const (
 	player = "Player"
-	Gracz  = "Gracz"
+	Gracz         = "Gracz"
 )
+
+
+
