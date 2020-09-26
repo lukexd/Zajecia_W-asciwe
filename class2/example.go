@@ -39,7 +39,6 @@ func OpenAndReadFile(fileName string) {
 
 	if err != nil {
 		log.Fatalf("%v", err)
-
 	}
 
 	scanner := bufio.NewScanner(file)
