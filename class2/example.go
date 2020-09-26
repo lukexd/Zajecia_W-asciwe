@@ -29,6 +29,7 @@ func ReadFile(fileName string) {
 	}
 
 	fmt.Print(string(data))
+
 }
 
 func OpenAndReadFile(fileName string) {
