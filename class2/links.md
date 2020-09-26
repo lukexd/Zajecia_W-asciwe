@@ -1,0 +1,1 @@
+* [Reading file example](https://gobyexample.com/reading-files)
