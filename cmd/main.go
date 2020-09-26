@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	c1 "github/Ko4s/goCourse/class1"
+	"github/Ko4s/goCourse/class2"
 )
 
 func main() {
-	//uruchamiam funcke z paczki goexamples
-	fmt.Println("Hello World")
-	c1.ControlProgramWithArgs()
+	filePath := "class2/test.txt"
+	r := class2.OpenFile(filePath)
+	fmt.Println(r)
 }
